@@ -94,8 +94,8 @@ void menu();
 void burgers_menu();
 void hotdogs_menu();
 void bev_menu();
-void print_orders(vector <food> orders, double *bill);
-void print_ordersreceipt(vector <food> orders, double *bill, double change);
+void print_orders(vector <food> orders, double* bill);
+void print_ordersreceipt(vector <food> orders, double* bill, double change);
 void process_order(int category, int selector, double num_of_order, int size, string* tmpname, double* tmpprice, double* tmpcount);
 int main()
 {
@@ -603,7 +603,7 @@ void process_order(int category, int selector, double num_of_order, int size, st
         break;
     }
 }
-void print_orders(vector <food> orders, double *bill)
+void print_orders(vector <food> orders, double* bill)
 {
     *bill = 0;
     cout << endl << endl;
@@ -657,7 +657,7 @@ void print_orders(vector <food> orders, double *bill)
         cout << "=";
     }
     cout << endl << endl;
-    cout << lborder << lborder << hborder << "\t   TOTAL BILL: " << * bill << endl;
+    cout << lborder << lborder << hborder << "\t   TOTAL BILL: " << *bill << endl;
 }
 void print_ordersreceipt(vector <food> orders, double* bill, double change)
 {
@@ -696,10 +696,7 @@ void print_ordersreceipt(vector <food> orders, double* bill, double change)
         cout << setprecision(0) << "       " << orders[i].getfcount() << "x        ";
         cout << fixed << setprecision(1) << orders[i].get_total() << endl;
     }
-    for (int i = 0; i < orders.size(); i++)
-    {
-        *bill += orders[i].get_total();
-    }
+    
     cout << endl;
     cout << hborder;
     for (int i = 0; i < 90; i++)
