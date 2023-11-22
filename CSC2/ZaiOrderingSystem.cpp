@@ -850,12 +850,6 @@ void print_ordersreceipt(vector <food> orders, double bill, double balance, doub
             lop = lop / 10;
         } while (lop > 0);
 
-        for (double j = orders[i].getquantity(); j > 0;)
-        {
-            j = j / 10;
-            quantlength++;
-        }
-
         if (orders[i].getcategory() != 3)
         {
             orders[i].setsize(0);
