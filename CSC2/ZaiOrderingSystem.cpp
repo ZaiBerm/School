@@ -1,3 +1,5 @@
+//NEED TO CHANGE THE WORD "BALANCE"
+
 #include <iostream>
 #include <iomanip>
 #include <vector>
