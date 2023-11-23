@@ -335,14 +335,14 @@ checkout:
         cout << "cashier's pov:";
         print_orders(orders, &totalbill);
 
-        cout << lborder << lborder << hborder << "\t   YOUR BALANCE: ";
+        cout << lborder << lborder << hborder << "  CUSTOMER'S PAYMENT: ";
         cin >> balance;
 
         if (balance >= totalbill)
         {
             change = balance - totalbill;
 
-            cout << endl << lborder << lborder << hborder << "\t   YOUR CHANGE: " << change << endl << endl;
+            cout << endl << lborder << lborder << hborder << "\t       CHANGE: " << change << endl << endl;
 
             do
             {
@@ -539,7 +539,7 @@ void loading()
     cout << ".";
     Sleep(300);
     cout << ".";
-    Sleep(300);
+    Sleep(600);
 
     cout << endl << endl;
 }
@@ -894,6 +894,6 @@ void print_ordersreceipt(vector <food> orders, double bill, double balance, doub
 
 
     cout << lborder << lborder << hborder << "\t   TOTAL BILL: " << bill << endl;
-    cout << lborder << lborder << hborder << "\t      BALANCE: " << balance << endl;
+    cout << lborder << lborder << hborder << "\t      PAYMENT: " << balance << endl;
     cout << lborder << lborder << hborder << "\t       CHANGE: " << change << endl;
 }
