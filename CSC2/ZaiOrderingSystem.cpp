@@ -96,13 +96,13 @@ public:
     //getter of total
     double get_total()
     {
-        
+
         ordertotal = getfprice() * quant;
 
         return ordertotal;
     }
 
-    
+
 };
 
 string lborder = "                          ";
@@ -115,7 +115,7 @@ void menu();
 void burgers_menu();
 void hotdogs_menu();
 void bev_menu();
-void print_orders(vector <food> orders, double *bill);
+void print_orders(vector <food> orders, double* bill);
 void print_ordersreceipt(vector <food> orders, double bill, double balance, double change);
 
 //FUNCTION THAT ASSIGN A VALUE ON THE TEMPORARY VARIABLES
@@ -164,7 +164,6 @@ int main()
 
     system("cls");
 
-    loading();
 
 categ:
 
@@ -200,7 +199,7 @@ categ:
         size = 1;
 
         Sleep(800);
-            
+
         do
         {
             cout << "\t\t\t\t ENTER ORDER: ";
@@ -208,7 +207,7 @@ categ:
         } while (selector < 1 || selector > 5);
 
         Sleep(300);
-      
+
         cout << "\t\t\t\t HOW MANY: ";
         cin >> num_of_order;
     }
@@ -218,7 +217,7 @@ categ:
         hotdogs_menu();
         category = 2;
         size = 1;
-        
+
         Sleep(800);
 
         do
@@ -247,7 +246,7 @@ categ:
         } while (size < 1 || size > 3);
 
         Sleep(300);
-            
+
         do
         {
             cout << "\t\t\t\t ENTER ORDER: ";
@@ -310,8 +309,9 @@ checkout:
 
     system("cls");
 
+    cout << "customer's pov:";
     print_orders(orders, &totalbill);
-    
+
     cout << endl << endl;
 
     cout << hborder << "[1]CONFIRM ITEM, [2]EDIT ITEM, [3]CLEAR ALL ITEMS AND GO TO THE MENU PAGE " << endl << endl;
@@ -327,7 +327,10 @@ checkout:
     if (selector == 1)
     {
         system("cls");
+        loading();
+        system("cls");
 
+        cout << "cashier's pov:";
         print_orders(orders, &totalbill);
 
         cout << lborder << lborder << hborder << "\t   YOUR BALANCE: ";
@@ -345,7 +348,7 @@ checkout:
                 cin >> selector;
 
             } while (selector != 1 && selector != 2);
-            
+
             system("cls");
 
             if (selector == 1)
@@ -356,7 +359,7 @@ checkout:
                 system("pause");
                 return 0;
             }
-            
+
         }
         else
         {
@@ -370,6 +373,7 @@ checkout:
     editpage:
 
         system("cls");
+        cout << "customer's pov:";
         print_orders(orders, &totalbill);
 
         cout << endl << endl << hborder << "[1]DECREASE ITEM, [2]INCREASE ITEM, [3]ADD ITEM, [4]BACK" << endl << endl;
@@ -386,6 +390,7 @@ checkout:
             {
                 system("cls");
 
+                cout << "customer's pov:";
                 print_orders(orders, &totalbill);
 
                 cout << endl << endl << hborder << "ENTER THE ID OF THE ITEM YOU WANT TO DECREASE. " << endl;
@@ -396,7 +401,7 @@ checkout:
                     cout << hborder << "ENTER: ";
                     cin >> selector;
                 } while (selector <= 0 || selector > orders.size() + 1);
-                
+
                 if (selector != orders.size() + 1)
                 {
                     orders[selector - 1].setquant(orders[selector - 1].getquantity() - 1);
@@ -411,7 +416,7 @@ checkout:
                 }
 
             } while (selector != orders.size() + 1);
-           
+
         }
         else if (selector == 2)
         {
@@ -419,6 +424,7 @@ checkout:
             {
                 system("cls");
 
+                cout << "customer's pov:";
                 print_orders(orders, &totalbill);
 
                 cout << endl << endl << hborder << "ENTER THE ID OF THE ITEM YOU WANT TO INCREASE. " << endl;
@@ -429,7 +435,7 @@ checkout:
                     cout << hborder << "ENTER: ";
                     cin >> selector;
                 } while (selector <= 0 || selector > orders.size() + 1);
-               
+
 
                 if (selector != orders.size() + 1)
                     orders[selector - 1].setquant(orders[selector - 1].getquantity() + 1);
@@ -463,7 +469,7 @@ checkout:
 
 void front_page()
 {
-    cout << endl;
+    cout << "customer's pov:" << endl;
 
     cout << hborder;
     for (int i = 0; i < 90; i++)
@@ -522,26 +528,23 @@ void front_page()
 
 void loading()
 {
-    cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    cout << "customer's pov:" << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
-    cout << lborder << hborder << "\t\t  PLEASE WAIT A MOMENT";
-    Sleep(800);
+    cout << lborder << "\t  YOUR ORDER IS BEING TRANSFER TO THE CASHIER";
+    Sleep(300);
     cout << ".";
-    Sleep(800);
+    Sleep(300);
     cout << ".";
-    Sleep(800);
+    Sleep(300);
     cout << ".";
-    Sleep(800);
+    Sleep(300);
 
     cout << endl << endl;
-
-    cout << lborder << hborder << "\t      THANK YOU FOR YOUR PATIENCE!!!";
-    Sleep(1000);
 }
 
 void menu()
 {
-    cout << endl;
+    cout << "customer's pov:" << endl;
 
     cout << hborder;
     for (int i = 0; i < 90; i++)
@@ -578,7 +581,7 @@ void menu()
 
 void burgers_menu()
 {
-    cout << endl << endl << endl;
+    cout << "customer's pov:" << endl << endl << endl;
 
     cout << hborder << "   ";
     for (int i = 0; i < 88; i++)
@@ -605,7 +608,7 @@ void burgers_menu()
 
 void hotdogs_menu()
 {
-    cout << endl << endl << endl;
+    cout << "customer's pov:" << endl << endl << endl;
 
     cout << hborder << "   ";
     for (int i = 0; i < 88; i++)
@@ -631,7 +634,7 @@ void hotdogs_menu()
 
 void bev_menu()
 {
-    cout << endl << endl << endl;
+    cout << "customer's pov:" << endl << endl << endl;
 
     cout << hborder << "   ";
     for (int i = 0; i < 88; i++)
@@ -657,7 +660,7 @@ void bev_menu()
 
 void process_order(int category, int selector, double num_of_order, int size, string* tmpname, double* tmpprice, double* tmpquant)
 {
-   
+
     switch (category)
     {
     case 1:
@@ -716,7 +719,7 @@ void process_order(int category, int selector, double num_of_order, int size, st
             break;
         }
         break;
-        
+
     case 3:
         switch (selector)
         {
@@ -742,11 +745,11 @@ void process_order(int category, int selector, double num_of_order, int size, st
             break;
         }
         break;
-    
+
     }
 }
 
-void print_orders(vector <food> orders, double *bill)
+void print_orders(vector <food> orders, double* bill)
 {
     *bill = 0;
 
@@ -761,7 +764,7 @@ void print_orders(vector <food> orders, double *bill)
     }
     cout << endl << endl;
 
-    
+
 
     cout << lborder << "[ID]   [NAME] \t      [SIZE]    [PRICE]    [QUANT]    [TOTAL]" << endl << endl;
 
@@ -780,7 +783,7 @@ void print_orders(vector <food> orders, double *bill)
         {
             orders[i].setsize(0);
         }
-        
+
         cout << lborder << " " << i + 1 << ".     " << orders[i].getname();
 
         for (int j = 0; j < 22 - orders[i].getname().size(); j++)
@@ -800,7 +803,7 @@ void print_orders(vector <food> orders, double *bill)
         }
 
         cout << fixed << setprecision(1) << orders[i].get_total() << endl;
-        
+
     }
 
     for (int i = 0; i < orders.size(); i++)
@@ -815,18 +818,18 @@ void print_orders(vector <food> orders, double *bill)
         cout << "=";
     }
     cout << endl << endl;
-        
-    cout << lborder << lborder << hborder << "\t   TOTAL BILL: " << * bill << endl;
+
+    cout << lborder << lborder << hborder << "\t   TOTAL BILL: " << *bill << endl;
 
 
 }
 
 void print_ordersreceipt(vector <food> orders, double bill, double balance, double change)
 {
-    cout << endl << endl;
-    cout << lborder << hborder << "\t  THANK YOU FOR YOUR PURCHASE!!!" << endl;
-    cout << lborder << hborder << "\t  THANK YOU FOR YOUR PURCHASE!!!" << endl;
-    cout << lborder << hborder << "\t  THANK YOU FOR YOUR PURCHASE!!!" << endl << endl;
+    cout << "cashier's pov:" << endl << endl;
+    cout << lborder << hborder << "\t           !!!ZAI's SHOP!!!" << endl;
+    cout << lborder << hborder << "\t081, Brgy. Matictic Norzagaray Bulacan" << endl;
+    cout  << endl << endl;
     cout << hborder << "   \t       \t \t\t\t\t\t          DATE: " << __DATE__ << endl;
     cout << hborder << "   RECEIPT RECEIPT \t\t\t\t\t\t  TIME: " << __TIME__ << endl << endl;
 
@@ -886,7 +889,7 @@ void print_ordersreceipt(vector <food> orders, double bill, double balance, doub
     }
     cout << endl << endl;
 
-    
+
 
     cout << lborder << lborder << hborder << "\t   TOTAL BILL: " << bill << endl;
     cout << lborder << lborder << hborder << "\t      BALANCE: " << balance << endl;
