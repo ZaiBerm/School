@@ -122,11 +122,14 @@ void print_ordersreceipt(vector <food> orders, double bill, double balance, doub
 //FUNCTION THAT ASSIGN A VALUE ON THE TEMPORARY VARIABLES
 void process_order(int category, int selector, double num_of_order, int size, string* tmpname, double* tmpprice, double* tmpquant);  //assigns value to the temporary variable that wil be use to store a value to the members of the object of a food class
 
+//FUNCTION THAT CHECKS THE INPUT
+bool cin_check();
+
 
 
 int main()
 {
-    int selector = 0;  
+    int selector = 0;
     food order;
     vector<food> orders;
     int size = 0;
@@ -146,6 +149,8 @@ int main()
     {
         cout << "\t\t\t\t\t\t ENTER: ";
         cin >> selector;
+
+        cin_check();
 
         if (selector == 2)
         {
@@ -177,6 +182,7 @@ categ:
     {
         cout << hborder << "IN WHAT CATEGORY WOULD YOU LIKE TO ORDER? ";
         cin >> selector;
+        cin_check();
 
         if (selector >= 1 && selector <= 2)
         {
@@ -204,12 +210,18 @@ categ:
         {
             cout << "\t\t\t\t ENTER ORDER: ";
             cin >> selector;
+            cin_check();
         } while (selector < 1 || selector > 5);
 
         Sleep(300);
 
-        cout << "\t\t\t\t HOW MANY: ";
-        cin >> num_of_order;
+        
+        do
+        {
+            cout << "\t\t\t\t HOW MANY: ";
+            cin >> num_of_order;
+        } while (cin_check());
+        
     }
     else if (selector == 2)
     {
@@ -224,12 +236,17 @@ categ:
         {
             cout << "\t\t\t\t ENTER ORDER: ";
             cin >> selector;
+            cin_check();
+
         } while (selector < 1 || selector > 4);
 
         Sleep(300);
 
-        cout << "\t\t\t\t HOW MANY: ";
-        cin >> num_of_order;
+        do
+        {
+            cout << "\t\t\t\t HOW MANY: ";
+            cin >> num_of_order;
+        } while (cin_check());
     }
     else if (selector == 3)
     {
@@ -243,6 +260,7 @@ categ:
         {
             cout << "\t\t\t\t ENTER SIZE [1]SMALL, [2]MEDIUM, [3]LARGE: ";
             cin >> size;
+            cin_check();
         } while (size < 1 || size > 3);
 
         Sleep(300);
@@ -251,12 +269,16 @@ categ:
         {
             cout << "\t\t\t\t ENTER ORDER: ";
             cin >> selector;
+            cin_check();
         } while (selector < 1 || selector > 4);
 
         Sleep(300);
 
-        cout << "\t\t\t\t HOW MANY: ";
-        cin >> num_of_order;
+        do
+        {
+            cout << "\t\t\t\t HOW MANY: ";
+            cin >> num_of_order;
+        } while (cin_check());
     }
 
     process_order(category, selector, num_of_order, size, &tmpname, &tmpprice, &tmpquant);
@@ -271,6 +293,7 @@ categ:
     {
         cout << lborder << lborder << lborder << "BUY MORE? [1]YES, [2]NO: ";
         cin >> selector;
+        cin_check();
 
     } while (selector != 1 && selector != 2);
 
@@ -280,6 +303,7 @@ categ:
         {
             cout << lborder << lborder << lborder << "IN THE SAME CATEGORY? [1]YES, [2]NO: ";
             cin >> selector;
+            cin_check();
         } while (selector != 1 && selector != 2);
 
         if (selector == 1)
@@ -320,6 +344,7 @@ checkout:
     {
         cout << hborder << "ENTER: ";
         cin >> selector;
+        cin_check();
     } while (selector != 1 && selector != 2 && selector != 3);
 
     cout << endl << endl;
@@ -335,6 +360,7 @@ checkout:
 
         cout << lborder << lborder << hborder << "  CUSTOMER'S PAYMENT: ";
         cin >> balance;
+        cin_check();
 
         if (balance >= totalbill)
         {
@@ -346,6 +372,7 @@ checkout:
             {
                 cout << hborder << "PRINT THE RECEIPT? [1]YES, [2]NO: ";
                 cin >> selector;
+                cin_check();
 
             } while (selector != 1 && selector != 2);
 
@@ -382,6 +409,7 @@ checkout:
         {
             cout << hborder << "ENTER: ";
             cin >> selector;
+            cin_check();
         } while (selector != 1 && selector != 2 && selector != 3 && selector != 4);
 
         if (selector == 1)
@@ -396,10 +424,12 @@ checkout:
                 cout << endl << endl << hborder << "ENTER THE ID OF THE ITEM YOU WANT TO DECREASE. " << endl;
                 cout << hborder << "[" << orders.size() + 1 << "] BACK" << endl << endl;
 
+
                 do
                 {
                     cout << hborder << "ENTER: ";
                     cin >> selector;
+                    cin_check();
                 } while (selector <= 0 || selector > orders.size() + 1);
 
                 if (selector != orders.size() + 1)
@@ -434,6 +464,7 @@ checkout:
                 {
                     cout << hborder << "ENTER: ";
                     cin >> selector;
+                    cin_check();
                 } while (selector <= 0 || selector > orders.size() + 1);
 
 
@@ -829,7 +860,7 @@ void print_ordersreceipt(vector <food> orders, double bill, double balance, doub
     cout << "cashier's pov:" << endl << endl;
     cout << lborder << hborder << "\t           ---ZAI's SHOP---" << endl;
     cout << lborder << hborder << "\t081, Brgy. Matictic Norzagaray Bulacan" << endl;
-    cout  << endl << endl;
+    cout << endl << endl;
     cout << hborder << "   \t       \t \t\t\t\t\t          DATE: " << __DATE__ << endl;
     cout << hborder << "   RECEIPT RECEIPT \t\t\t\t\t\t  TIME: " << __TIME__ << endl << endl;
 
@@ -896,4 +927,18 @@ void print_ordersreceipt(vector <food> orders, double bill, double balance, doub
     cout << lborder << lborder << hborder << "\t       CHANGE: " << change << endl << endl;
     cout << lborder << hborder << "      THANK YOU FOR PURCHASING!!! " << endl;
     cout << lborder << hborder << "          PLEASE COME AGAIN!!! " << endl << endl;
+}
+
+
+bool cin_check()
+{
+    if (cin.fail())
+    {
+        cin.clear();
+        cin.ignore();
+
+        return true;
+    }
+    
+    return false;
 }
