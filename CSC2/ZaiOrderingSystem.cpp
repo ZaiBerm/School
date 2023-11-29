@@ -207,7 +207,7 @@ categ:
         category = 1;
         size = 1;
 
-        Sleep(800);
+        //Sleep(800);  //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
         do
         {
@@ -217,7 +217,7 @@ categ:
             cin_check();
         } while (selector < 1 || selector > 5);
 
-        Sleep(300);
+        //Sleep(300);  //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
         
         do
@@ -235,7 +235,7 @@ categ:
         category = 2;
         size = 1;
 
-        Sleep(800);
+        //Sleep(800);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
         do
         {
@@ -246,7 +246,7 @@ categ:
 
         } while (selector < 1 || selector > 4);
 
-        Sleep(300);
+        //Sleep(300);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
         do
         {
@@ -261,7 +261,7 @@ categ:
         bev_menu();
         category = 3;
 
-        Sleep(800);
+        //Sleep(800);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
         do
         {
@@ -271,7 +271,7 @@ categ:
             cin_check();
         } while (size < 1 || size > 3);
 
-        Sleep(300);
+        //Sleep(300);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
         do
         {
@@ -281,7 +281,7 @@ categ:
             cin_check();
         } while (selector < 1 || selector > 4);
 
-        Sleep(300);
+        //Sleep(300);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
         do
         {
@@ -297,7 +297,7 @@ categ:
 
     orders.push_back(order);
 
-    Sleep(500);
+    //Sleep(500);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
     do
     {
