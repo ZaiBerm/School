@@ -1,4 +1,4 @@
-//DONE
+//DONE DONE
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -149,6 +149,7 @@ int main()
     {
         cout << "\t\t\t\t\t\t ENTER: ";
         cin >> selector;
+        cout << endl;
 
         cin_check();
 
@@ -182,7 +183,9 @@ categ:
     {
         cout << hborder << "IN WHAT CATEGORY WOULD YOU LIKE TO ORDER? ";
         cin >> selector;
+        cout << endl;
         cin_check();
+    
 
         if (selector >= 1 && selector <= 2)
         {
@@ -210,6 +213,7 @@ categ:
         {
             cout << "\t\t\t\t ENTER ORDER: ";
             cin >> selector;
+            cout << endl;
             cin_check();
         } while (selector < 1 || selector > 5);
 
@@ -220,6 +224,7 @@ categ:
         {
             cout << "\t\t\t\t HOW MANY: ";
             cin >> num_of_order;
+            cout << endl;
         } while (cin_check());
         
     }
@@ -236,6 +241,7 @@ categ:
         {
             cout << "\t\t\t\t ENTER ORDER: ";
             cin >> selector;
+            cout << endl;
             cin_check();
 
         } while (selector < 1 || selector > 4);
@@ -246,6 +252,7 @@ categ:
         {
             cout << "\t\t\t\t HOW MANY: ";
             cin >> num_of_order;
+            cout << endl;
         } while (cin_check());
     }
     else if (selector == 3)
@@ -260,6 +267,7 @@ categ:
         {
             cout << "\t\t\t\t ENTER SIZE [1]SMALL, [2]MEDIUM, [3]LARGE: ";
             cin >> size;
+            cout << endl;
             cin_check();
         } while (size < 1 || size > 3);
 
@@ -269,6 +277,7 @@ categ:
         {
             cout << "\t\t\t\t ENTER ORDER: ";
             cin >> selector;
+            cout << endl;
             cin_check();
         } while (selector < 1 || selector > 4);
 
@@ -278,6 +287,7 @@ categ:
         {
             cout << "\t\t\t\t HOW MANY: ";
             cin >> num_of_order;
+            cout << endl;
         } while (cin_check());
     }
 
@@ -293,6 +303,7 @@ categ:
     {
         cout << lborder << lborder << lborder << "BUY MORE? [1]YES, [2]NO: ";
         cin >> selector;
+        cout << endl;
         cin_check();
 
     } while (selector != 1 && selector != 2);
@@ -303,6 +314,7 @@ categ:
         {
             cout << lborder << lborder << lborder << "IN THE SAME CATEGORY? [1]YES, [2]NO: ";
             cin >> selector;
+            cout << endl;
             cin_check();
         } while (selector != 1 && selector != 2);
 
@@ -344,6 +356,7 @@ checkout:
     {
         cout << hborder << "ENTER: ";
         cin >> selector;
+        cout << endl;
         cin_check();
     } while (selector != 1 && selector != 2 && selector != 3);
 
@@ -358,9 +371,13 @@ checkout:
         cout << "cashier's pov:";
         print_orders(orders, &totalbill);
 
-        cout << lborder << lborder << hborder << "  CUSTOMER'S PAYMENT: ";
-        cin >> balance;
-        cin_check();
+        do
+        {
+            cout << lborder << lborder << hborder << "  CUSTOMER'S PAYMENT: ";
+            cin >> balance;
+            cout << endl;
+        } while (cin_check());
+        
 
         if (balance >= totalbill)
         {
