@@ -168,12 +168,11 @@ int main()
 
     } while (selector != 1 && selector != 2);
 
-
     system("cls");
-
 
 categ:
 
+    system("cls");
 
     menu();
 
