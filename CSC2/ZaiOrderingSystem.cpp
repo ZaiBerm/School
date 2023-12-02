@@ -384,13 +384,11 @@ checkout:
 
             cout << endl << lborder << lborder << hborder << "\t       CHANGE: " << change << endl << endl;
 
-            do
-            {
-                cout << hborder << "PRINT THE RECEIPT? [1]YES, [2]NO: ";
-                cin >> selector;
-                cin_check();
-
-            } while (selector != 1 && selector != 2);
+            cout << hborder << "PRINTING RECEIPT";
+            Sleep(300); cout << ".";
+            Sleep(300); cout << ".";
+            Sleep(300); cout << ".";
+            Sleep(500);
 
             system("cls");
 
