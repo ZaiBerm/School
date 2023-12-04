@@ -376,7 +376,7 @@ checkout:
             cout << lborder << lborder << hborder << "  CUSTOMER'S PAYMENT: ";
             cin >> balance;
             cout << endl;
-        } while (cin_check());
+        } while (cin_check() || balance < totalbill);
 
 
         if (balance >= totalbill)
