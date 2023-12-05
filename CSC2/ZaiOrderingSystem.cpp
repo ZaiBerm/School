@@ -205,8 +205,7 @@ categ:
         category = 1;
         size = 1;
 
-        //Sleep(800);  //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
-
+       
         do
         {
             cout << "\t\t\t\t ENTER ORDER: ";
@@ -214,8 +213,6 @@ categ:
             cout << endl;
             cin_check();
         } while (selector < 1 || selector > 5);
-
-        //Sleep(300);  //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
 
         do
@@ -233,8 +230,7 @@ categ:
         category = 2;
         size = 1;
 
-        //Sleep(800);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
-
+        
         do
         {
             cout << "\t\t\t\t ENTER ORDER: ";
@@ -244,8 +240,7 @@ categ:
 
         } while (selector < 1 || selector > 4);
 
-        //Sleep(300);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
-
+        
         do
         {
             cout << "\t\t\t\t HOW MANY: ";
@@ -259,8 +254,7 @@ categ:
         bev_menu();
         category = 3;
 
-        //Sleep(800);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
-
+        
         do
         {
             cout << "\t\t\t\t ENTER SIZE [1]SMALL, [2]MEDIUM, [3]LARGE: ";
@@ -269,8 +263,7 @@ categ:
             cin_check();
         } while (size < 1 || size > 3);
 
-        //Sleep(300);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
-
+        
         do
         {
             cout << "\t\t\t\t ENTER ORDER: ";
@@ -279,8 +272,7 @@ categ:
             cin_check();
         } while (selector < 1 || selector > 4);
 
-        //Sleep(300);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
-
+        
         do
         {
             cout << "\t\t\t\t HOW MANY: ";
@@ -294,8 +286,6 @@ categ:
     order.setfinfo(tmpname, tmpprice, tmpquant, size, category);
 
     orders.push_back(order);
-
-    //Sleep(500);   //remove the double slash on the start of Sleep function if you want some delay when your program prompt for order.
 
     do
     {
@@ -376,6 +366,11 @@ checkout:
             cout << lborder << lborder << hborder << "  CUSTOMER'S PAYMENT: ";
             cin >> balance;
             cout << endl;
+
+            if (cin && balance < totalbill)
+            {
+                cout << hborder << "INSUFFICIENT AMOUNT.\n"; 
+            }
         } while (cin_check() || balance < totalbill);
 
 
