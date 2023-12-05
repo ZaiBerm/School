@@ -123,6 +123,8 @@ void process_order(int category, int selector, double num_of_order, int size, st
 //FUNCTION THAT CHECKS THE INPUT
 bool cin_check();
 
+//GETS THE ORDER
+void get_order(int x, int y, int *selector, double *num_of_order);
 
 int main()
 {
@@ -205,22 +207,7 @@ categ:
         category = 1;
         size = 1;
 
-       
-        do
-        {
-            cout << "\t\t\t\t ENTER ORDER: ";
-            cin >> selector;
-            cout << endl;
-            cin_check();
-        } while (selector < 1 || selector > 5);
-
-
-        do
-        {
-            cout << "\t\t\t\t HOW MANY: ";
-            cin >> num_of_order;
-            cout << endl;
-        } while (cin_check());
+        get_order(1, 5, &selector, &num_of_order);
 
     }
     else if (selector == 2)
@@ -230,23 +217,8 @@ categ:
         category = 2;
         size = 1;
 
-        
-        do
-        {
-            cout << "\t\t\t\t ENTER ORDER: ";
-            cin >> selector;
-            cout << endl;
-            cin_check();
+        get_order(1, 4, &selector, &num_of_order);
 
-        } while (selector < 1 || selector > 4);
-
-        
-        do
-        {
-            cout << "\t\t\t\t HOW MANY: ";
-            cin >> num_of_order;
-            cout << endl;
-        } while (cin_check());
     }
     else if (selector == 3)
     {
@@ -263,22 +235,7 @@ categ:
             cin_check();
         } while (size < 1 || size > 3);
 
-        
-        do
-        {
-            cout << "\t\t\t\t ENTER ORDER: ";
-            cin >> selector;
-            cout << endl;
-            cin_check();
-        } while (selector < 1 || selector > 4);
-
-        
-        do
-        {
-            cout << "\t\t\t\t HOW MANY: ";
-            cin >> num_of_order;
-            cout << endl;
-        } while (cin_check());
+        get_order(1, 4, &selector, &num_of_order);
     }
 
     process_order(category, selector, num_of_order, size, &tmpname, &tmpprice, &tmpquant);
@@ -835,9 +792,17 @@ void print_orders(vector <food> orders, double* bill)
         {
             cout << " ";
         }
-        else
+        else if (orders[i].getsize() == 1)
         {
-            cout << orders[i].getsize();
+            cout << "S";
+        }
+        else if (orders[i].getsize() == 2)
+        {
+            cout << "M";
+        }
+        else 
+        {
+            cout << "L";
         }
 
         cout << fixed << std::setprecision(1) << "         " << orders[i].getfprice();
@@ -973,4 +938,23 @@ bool cin_check()
     }
     
     return false;
+}
+
+void get_order(int x, int y, int *selector, double *num_of_order)
+{
+    do
+    {
+        cout << "\t\t\t\t ENTER ORDER: ";
+        cin >> *selector;
+        cout << endl;
+        cin_check();
+
+    } while (*selector < x || *selector > y);
+
+    do
+    {
+        cout << "\t\t\t\t HOW MANY: ";
+        cin >> *num_of_order;
+        cout << endl;
+    } while (cin_check());
 }
