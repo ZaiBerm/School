@@ -123,7 +123,7 @@ void process_order(int category, int selector, double num_of_order, int size, st
 //FUNCTION THAT CHECKS THE INPUT
 bool cin_check();
 
-//GETS THE ORDER
+//GETS THE ORDER AND ITS QUANTITY
 void get_order(int x, int y, int *selector, double *num_of_order);
 
 int main()
@@ -137,7 +137,6 @@ int main()
     string tmpname;
     double tmpprice;
     double tmpquant;
-    bool runner = true;
     double totalbill = 0;
     double balance = 0;
     double change = 0;
@@ -148,7 +147,6 @@ int main()
     {
         cout << "\t\t\t\t\t\t ENTER: ";
         cin >> selector;
-        cout << endl;
 
         cin_check();
 
@@ -183,7 +181,6 @@ categ:
     {
         cout << hborder << "IN WHAT CATEGORY WOULD YOU LIKE TO ORDER? ";
         cin >> selector;
-        cout << endl;
         cin_check();
 
 
@@ -248,7 +245,12 @@ categ:
     {
         cout << lborder << lborder << lborder << "BUY MORE? [1]YES, [2]NO: ";
         cin >> selector;
-        cout << endl;
+        
+        if (!cin || selector < 1 || selector > 2)
+        {
+            cout << lborder <<  "INVALID INPUT." << endl;
+        }
+
         cin_check();
 
     } while (selector != 1 && selector != 2);
@@ -259,7 +261,12 @@ categ:
         {
             cout << lborder << lborder << lborder << "IN THE SAME CATEGORY? [1]YES, [2]NO: ";
             cin >> selector;
-            cout << endl;
+            
+            if (!cin || selector < 1 || selector > 2)
+            {
+                cout << lborder <<  "INVALID INPUT." << endl;
+            }
+
             cin_check();
         } while (selector != 1 && selector != 2);
 
@@ -302,7 +309,11 @@ checkout:
     {
         cout << hborder << "ENTER: ";
         cin >> selector;
-        cout << endl;
+
+        if (!cin || selector < 1 || selector > 3)
+        {
+            cout << lborder <<  "INVALID INPUT." << endl;
+        }
         cin_check();
     } while (selector != 1 && selector != 2 && selector != 3);
 
@@ -322,12 +333,16 @@ checkout:
         {
             cout << lborder << lborder << hborder << "  CUSTOMER'S PAYMENT: ";
             cin >> balance;
-            cout << endl;
 
             if (cin && balance < totalbill)
             {
                 cout << hborder << "INSUFFICIENT AMOUNT.\n"; 
             }
+            else if (!cin)
+            {
+                cout << hborder << "INVALID INPUT.\n"; 
+            }
+
         } while (cin_check() || balance < totalbill);
 
 
@@ -381,6 +396,12 @@ checkout:
         {
             cout << hborder << "ENTER: ";
             cin >> selector;
+
+            if (!cin || selector < 1 || selector > 4)
+            {
+                cout << lborder <<  "INVALID INPUT." << endl;
+            }
+
             cin_check();
         } while (selector != 1 && selector != 2 && selector != 3 && selector != 4);
 
@@ -946,15 +967,26 @@ void get_order(int x, int y, int *selector, double *num_of_order)
     {
         cout << "\t\t\t\t ENTER ORDER: ";
         cin >> *selector;
-        cout << endl;
+
+        if (!cin || *selector < x || *selector > y)
+        {
+            cout << "\t\t\t\t\t\tINVALID INPUT" << endl;
+        }
         cin_check();
+
 
     } while (*selector < x || *selector > y);
 
     do
     {
+        cin_check();
         cout << "\t\t\t\t HOW MANY: ";
         cin >> *num_of_order;
-        cout << endl;
-    } while (cin_check());
+        
+        if (!cin || *num_of_order < 1)
+        {
+            cout << "\t\t\t\t\t\tINVALID INPUT" << endl;
+        }
+
+    } while (*num_of_order < 1 || !cin);
 }
